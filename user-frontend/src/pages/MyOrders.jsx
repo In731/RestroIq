@@ -3,30 +3,61 @@ import { useAuth } from '../context/AuthContext'
 
 const VOICE_API = 'http://localhost:3002'
 
-export default function MyOrders() {
+export default function MyOrders({ activeTab, sessionId }) {
   const { user } = useAuth()
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
   const [expandedId, setExpandedId] = useState(null)
 
-  useEffect(() => {
+  const fetchOrders = async (isManual = false) => {
     const uid = user?._id || user?.id
-    if (!uid) { setLoading(false); return }
-    fetch(`${VOICE_API}/order/user/${uid}`, { credentials: 'include' })
-      .then(r => r.json())
-      .then(d => { setOrders(d.data || []); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [user])
+    if (!uid && !sessionId) {
+      setLoading(false)
+      setRefreshing(false)
+      return
+    }
+    if (isManual) setRefreshing(true)
+    else setLoading(true)
 
-  if (loading) return <div className="loading"><div className="spinner"></div><p>Loading your orders...</p></div>
+    try {
+      const url = uid
+        ? `${VOICE_API}/order/user/${uid}?sessionId=${sessionId || ''}`
+        : `${VOICE_API}/order/user/000000000000000000000000?sessionId=${sessionId || ''}`
+      const res = await fetch(url, { credentials: 'include' })
+      const d = await res.json()
+      setOrders(d.data || [])
+    } catch {
+      // Ignore network errors on polling
+    } finally {
+      setLoading(false)
+      setRefreshing(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchOrders()
+  }, [user, activeTab])
+
+  if (loading && orders.length === 0) return <div className="loading"><div className="spinner"></div><p>Loading your orders...</p></div>
 
   const totalSpent = orders.reduce((s, o) => s + (o.final_price || 0), 0)
 
   return (
     <>
-      <div className="page-header">
-        <h2>My Orders</h2>
-        <p>Your order history and details</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h2>My Orders</h2>
+          <p>Your order history and details</p>
+        </div>
+        <button
+          className="btn-secondary"
+          onClick={() => fetchOrders(true)}
+          disabled={refreshing}
+          style={{ padding: '8px 14px', fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 6 }}
+        >
+          {refreshing ? '🔄 Refreshing...' : '🔄 Refresh'}
+        </button>
       </div>
 
       <div className="stats-row">

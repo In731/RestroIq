@@ -121,7 +121,7 @@ function AppInner() {
           <CallOrder />
         </div>
         <div style={{ display: safeTab === 'orders' ? 'block' : 'none' }}>
-          <MyOrders />
+          <MyOrders activeTab={safeTab} sessionId={SESSION_ID} />
         </div>
         <div style={{ display: safeTab === 'profile' ? 'block' : 'none' }}>
           <Profile />

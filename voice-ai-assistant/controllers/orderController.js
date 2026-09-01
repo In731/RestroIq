@@ -1031,10 +1031,21 @@ exports.parseOrder = async (req, res) => {
 exports.getOrdersByUser = async (req, res) => {
     try {
         const { userId } = req.params;
-        if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+        const { sessionId } = req.query;
+
+        const queryConditions = [];
+        if (userId && mongoose.Types.ObjectId.isValid(userId)) {
+            queryConditions.push({ user_id: userId });
+        }
+        if (sessionId) {
+            queryConditions.push({ session_id: sessionId });
+        }
+
+        if (queryConditions.length === 0) {
             return res.json({ success: true, data: [] });
         }
-        const orders = await Order.find({ user_id: userId }).sort({ createdAt: -1 });
+
+        const orders = await Order.find({ $or: queryConditions }).sort({ createdAt: -1 });
         return res.json({ success: true, data: orders });
     } catch (error) {
         console.error("❌ getOrdersByUser error:", error);
