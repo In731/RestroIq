@@ -140,7 +140,9 @@ async function computeProductAnalytics() {
 async function computeAssociationRules() {
     const orders = await Order.find().lean();
     const totalOrders = orders.length;
-    if (totalOrders === 0) return [];
+    if (totalOrders === 0) {
+        return { rules: [], itemFreq: {}, pairFreq: {}, totalOrders: 0, nameMap: {}, productMap: {} };
+    }
 
     // Count single item frequencies and pair co-occurrences
     const itemFreq = {};

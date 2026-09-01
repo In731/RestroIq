@@ -42,7 +42,7 @@ export default function AdminLogin() {
             }}>
                 {/* Brand */}
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
-                    <img src="/logo.png" alt="RestroIQ" style={{
+                    <img src="/logo.png" alt="RestroɪQ" style={{
                         width: 72, height: 72, borderRadius: '50%', objectFit: 'cover',
                         border: '1px solid var(--border-light)',
                     }} />

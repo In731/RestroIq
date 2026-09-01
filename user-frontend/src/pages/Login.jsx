@@ -35,7 +35,7 @@ export default function Login({ onNavigate }) {
         <div className="auth-page">
             <div className="auth-card">
                 <div className="auth-brand" style={{ justifyContent: 'center' }}>
-                    <img src="/menu/logo.png" alt="RestroIQ" className="brand-logo" style={{ width: 160, height: 160 }} />
+                    <img src="/menu/logo.png" alt="RestroɪQ" className="brand-logo" style={{ width: 160, height: 160 }} />
                 </div>
 
                 <h2 className="auth-title">Welcome back</h2>

@@ -88,7 +88,7 @@ export default function Register({ onNavigate }) {
         <div className="auth-page">
             <div className="auth-card" style={{ maxWidth: 480 }}>
                 <div className="auth-brand" style={{ justifyContent: 'center' }}>
-                    <img src="/menu/logo.png" alt="RestroIQ" className="brand-logo" style={{ width: 72, height: 72 }} />
+                    <img src="/menu/logo.png" alt="RestroɪQ" className="brand-logo" style={{ width: 72, height: 72 }} />
                 </div>
 
                 <h2 className="auth-title">Create your account</h2>

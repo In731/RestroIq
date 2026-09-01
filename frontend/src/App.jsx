@@ -51,8 +51,8 @@ function AppInner() {
     <div className="app">
       <header className="topbar">
         <div className="topbar-brand">
-          <img src="/logo.png" alt="RestroIQ" className="brand-logo" />
-          <h1>RestroIQ<span>Revenue Intelligence</span></h1>
+          <img src="/logo.png" alt="RestroɪQ" className="brand-logo" />
+          <h1>RestroɪQ<span>Revenue Intelligence</span></h1>
         </div>
         <nav className="nav-items">
           {NAV_ITEMS.map(item => (

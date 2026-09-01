@@ -61,8 +61,8 @@ export default function BillView({ order, orderId, total, onClose }) {
         .total-row { border-top: 2px solid #1C1917; font-weight: 700; font-size: 16px; }
         .footer { text-align: center; margin-top: 24px; font-size: 12px; color: #A8A29E; }
       </style></head><body>
-      <div style="text-align:center;margin-bottom:8px"><img src="/menu/logo.png" alt="RestroIQ" style="width:48px;height:48px;border-radius:50%;object-fit:cover" /></div>
-      <h2>RestroIQ</h2>
+      <div style="text-align:center;margin-bottom:8px"><img src="/menu/logo.png" alt="RestroɪQ" style="width:48px;height:48px;border-radius:50%;object-fit:cover" /></div>
+      <h2>RestroɪQ</h2>
       <div class="sub">Order & Dine</div>
       <div class="meta"><span>Order: ${billOrderId.substring(0, 8)}...</span><span>${orderDate}</span></div>
       <table>
@@ -107,8 +107,8 @@ export default function BillView({ order, orderId, total, onClose }) {
                     <div className="bill-receipt">
                         {/* Header */}
                         <div className="bill-header">
-                            <img src="/menu/logo.png" alt="RestroIQ" className="bill-brand-logo" />
-                            <h3>RestroIQ</h3>
+                            <img src="/menu/logo.png" alt="RestroɪQ" className="bill-brand-logo" />
+                            <h3>RestroɪQ</h3>
                             <span className="bill-subtitle">Order & Dine</span>
                         </div>
 

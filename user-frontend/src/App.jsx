@@ -78,8 +78,8 @@ function AppInner() {
     <div className="app">
       <header className="topbar">
         <div className="topbar-brand">
-          <img src="/menu/logo.png" alt="RestroIQ" className="brand-logo" />
-          <h1>RestroIQ<span>Order & Dine</span></h1>
+          <img src="/menu/logo.png" alt="RestroɪQ" className="brand-logo" />
+          <h1>RestroɪQ<span>Order & Dine</span></h1>
         </div>
 
         <nav className="nav-items">
