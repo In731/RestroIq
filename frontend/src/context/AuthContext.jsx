@@ -2,7 +2,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthContext = createContext(null)
 
-const API = 'http://localhost:3002/api/auth'
+const VOICE_API = import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'
+const API = `${VOICE_API}/api/auth`
 
 export function AuthProvider({ children }) {
     const [admin, setAdmin] = useState(null)   // { id, name, email, role }

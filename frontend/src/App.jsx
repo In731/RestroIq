@@ -10,7 +10,7 @@ import Orders from './pages/Orders'
 // Pricing Dashboard — data-driven price suggestions & discount thresholds page
 import PricingDashboard from './pages/PricingDashboard'
 
-const API_BASE = 'http://localhost:3001/api'
+const API_BASE = `${import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:3001'}/api`
 
 const NAV_ITEMS = [
   { id: 'products', label: 'Analytics' },

@@ -2,7 +2,9 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthContext = createContext(null)
 
-const API = 'http://localhost:3002/api/auth'
+const VOICE_API = import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'
+const API = `${VOICE_API}/api/auth`
+const ADMIN_PORTAL_URL = import.meta.env.VITE_ADMIN_PORTAL_URL || 'http://localhost:5173/'
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
@@ -37,7 +39,7 @@ export function AuthProvider({ children }) {
             if (loginData.success) {
                 if (loginData.user.role === 'admin') {
                     // Redirect admin to admin portal
-                    window.location.href = 'http://localhost:5173/'
+                    window.location.href = ADMIN_PORTAL_URL
                     return data
                 }
                 setUser(loginData.user)
@@ -57,7 +59,7 @@ export function AuthProvider({ children }) {
         if (data.success) {
             if (data.user.role === 'admin') {
                 // Admin → redirect to admin portal immediately
-                window.location.href = 'http://localhost:5173/'
+                window.location.href = ADMIN_PORTAL_URL
                 return data
             }
             setUser(data.user)

@@ -12,7 +12,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 
-const API_BASE = 'http://localhost:3002/api'
+const API_BASE = `${import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'}/api`
 
 function getSessionId() {
   let sid = localStorage.getItem('restroiq_session')

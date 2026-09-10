@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-const VOICE_API = 'http://localhost:3002'
+const VOICE_API = import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'
 
 export default function MyOrders({ activeTab, sessionId }) {
   const { user } = useAuth()

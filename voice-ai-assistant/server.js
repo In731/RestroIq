@@ -18,7 +18,11 @@ const generateSpeech = require("./services/sarvamService");
 const app = express();
 
 // Middleware
-app.use(cors({ origin: true, credentials: true }));
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim())
+    : true;
+
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // Twilio sends form-encoded data
 app.use(cookieParser());                           // Parse JWT from HTTP-only cookie

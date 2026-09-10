@@ -27,8 +27,8 @@ export default function VerifyEmail({ onNavigate }) {
             return
         }
 
-        // If navigated to #verify-email with token param on URL
-        fetch(`http://localhost:3002/api/auth/verify-email?token=${token}`, {
+        const VOICE_API = import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'
+        fetch(`${VOICE_API}/api/auth/verify-email?token=${token}`, {
             redirect: 'manual', // don't follow the server redirect
         })
             .then(r => {

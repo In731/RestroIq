@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import BillView from './BillView'
 
-const VOICE_API = 'http://localhost:3002'
+const VOICE_API = import.meta.env.VITE_VOICE_API_URL || 'http://localhost:3002'
 
 export default function ChatOrder({ sessionId }) {
   const INITIAL_MSG = { role: 'bot', text: 'Hi! I\'m your ordering assistant. Tell me what you\'d like to order, ask about the menu, or say "confirm" when you\'re done!' }
